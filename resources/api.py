@@ -5,6 +5,7 @@ from rbac.decorators import permission_required
 from .models import Document
 from .serializers import DocumentSerializer
 
+
 class DocumentViewSet(viewsets.ModelViewSet):
 	queryset = Document.object.all()
 	serializer_class = DocumentSerializer

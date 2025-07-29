@@ -1,6 +1,7 @@
 from functools import wraps
 from django.http import HttpResponseForbidden
 
+# Декоратор для доступа
 def permission_required(resource_type,permission_type):
 	def decorator(view_func):
 		@wraps(view_func)

@@ -1,6 +1,7 @@
-from django.http import HttpResponseForbidden, HttpResponseUnauthorized
+from django.http import HttpResponseForbidden, HttpResponse
 from django.contrib.auth.models import AnonymousUser
 
+# Настройка доступа юзеров к данным
 class RBACMiddleware:
 	def __init__(self,get_response):
 		self.get_response = get_response
@@ -14,7 +15,7 @@ class RBACMiddleware:
 			return None
 
 		if isinstance(request.user, AnonymousUser):
-			return HttpResponseUnauthorized
+			return HttpResponse("Unauthorized", status=401)
 
 		required_permission = getattr(view_func,'required_permission',None)
 		if not required_permission:

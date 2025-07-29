@@ -3,7 +3,7 @@ from django.contrib.auth.models import Permission, Group
 from accounts.models import CustomUser
 from rbac.models import ResourceType, Role, AccessPermission
 
-
+# Заполнение данными
 class Command(BaseCommand):
 	help = 'Seeds RBAC system with test data'
 

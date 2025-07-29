@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Role, ResourceType, AccessPermission
 
+# Сериализация для для rbac
 class ResourceTypeSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ResourceType

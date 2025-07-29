@@ -1,7 +1,6 @@
 from rest_framework import viewsets, permissions
-from rest_framework.response import Response
 from .models import Role, ResourceType, AccessPermission
-from .serializers import RoleSerializer, ResourceTypeSerializer, AccessPermissionSerializer
+from .serializers import RoleSerializer, ResourceTypeSerializer, AccesPermissionSerializer
 
 class IsSuperUser(permissions.BasePermission):
 	def has_permission(self, request, view):
@@ -18,5 +17,5 @@ class ResourceTypeViewSet(viewsets.ModelViewSet):
     permission_classes = [IsSuperUser]
 class AccessPermissionViewSet(viewsets.ModelViewSet):
 	queryset = AccessPermission.all()
-	serializer_class = AccessPermissionSerializer
+	serializer_class = AccesPermissionSerializer
 	permission_classes = [IsSuperUser]

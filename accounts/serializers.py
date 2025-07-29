@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from accounts.models import CustomUser
-
+''' Сериализация для моделей аккаунта (для обработки и предоставления данных в нужном формате
+и более лаконичного кода'''
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
 	password = serializers.CharField(write_only=True)

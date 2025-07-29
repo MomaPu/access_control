@@ -9,7 +9,7 @@ from .serializers import (
     UserProfileSerializer
 )
 
-
+# Вью для регистрации пользователя
 class UserRegistrationView(generics.CreateAPIView):
 	serializer_class = UserRegistrationSerializer
 	permission_classes = [permissions.AllowAny]
@@ -27,6 +27,7 @@ class UserRegistrationView(generics.CreateAPIView):
 			'message': 'Пользователь успешно создан'
 		}, status = status.HTTP_201_CREATED)
 
+# Вью для авторизации пользователя
 class UserLoginView(APIView):
 	permission_classes = [permissions.AllowAny]
 
@@ -44,6 +45,7 @@ class UserLoginView(APIView):
 			'last_name': user.last_name,
 		})
 
+# Вью для выхода из системы пользователем
 class UserLogoutView(APIView):
 	permission_classes = [permissions.IsAuthenticated]
 
@@ -52,13 +54,15 @@ class UserLogoutView(APIView):
 		logout(request)
 		return Response({'message':' Успешный выход из системы '})
 
-
+# Вью для представления профиля
 class UserProfileView(APIView):
 	serializer_class = UserProfileSerializer
 	permission_classes = [permissions.IsAuthenticated]
 
 	def get_objects(self):
 		return self.request.user
+
+# Вью деактивации юзера
 class UserDeactivateView(APIView):
 	permissions_classes = [permissions.IsAuthenticated]
 
